@@ -6,6 +6,9 @@
 #include <ctype.h>
 
 
+#define TELEPHONE_MAX_LENGTH 30
+#define EMAIL_MAX_LENGTH 255
+
 // User roles
 typedef enum {
     ADMIN,
@@ -19,6 +22,13 @@ typedef struct {
     char firstName[100];
     char lastName[100];
     Role userRole;
+    char emailAddress[EMAIL_MAX_LENGTH];// Email address
+    char telephone[TELEPHONE_MAX_LENGTH];// Telephone
+    // Date of Birth
+    // Password??
+    // Account creation date
+    // Date of last update
+    // Free Text Notes
 } User;
 
 // Function prototypes
@@ -35,12 +45,14 @@ int main() {
 
     char choice;
     do {
-        printf("Please choose an operation: \n");
-        printf("Choose from the list of options or enter q to quit:\n");
+        printf("----------------------------\n");
+        printf("       Main Menu\n");
+        printf("----------------------------\n");
         printf("(1) Edit User \n");
         printf("(2) Create User\n");
         printf("(3) Delete User\n");
-        printf("(Q) Quit \n");
+        printf("(Q) Quit \n\n");
+        printf("----------------------------\n");
         printf("Enter your choice: ");
         scanf(" %c", &choice);
         choice = tolower(choice);
@@ -49,19 +61,19 @@ int main() {
 
         switch (choice) {
             case '1':
-                printf("Edit User Form\n");
+                printf("\nEdit User Form\n");
                 break;
             case '2':
-                printf("Create User Form\n");
+                printf("\nCreate User Form\n");
                 break;
             case '3':
-                printf("Delete User Form\n");
+                printf("\nDelete User Form\n");
                 break;
             case 'q':
-                printf("Exiting App\n");
+                printf("\nExiting App\n");
                 return 0;
             default:
-                printf("Invalid operation.\n\n");
+                printf("\nInvalid operation.\n\n");
 
         }
 
