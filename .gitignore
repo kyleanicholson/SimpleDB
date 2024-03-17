@@ -54,3 +54,4 @@ dkms.conf
 # Ignored directories and files
 .idea
 cmake-build-*
+/resources/users.txt

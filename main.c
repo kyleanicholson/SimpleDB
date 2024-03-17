@@ -1,45 +1,6 @@
-
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
-
-
-#define TELEPHONE_MAX_LENGTH 30
-#define EMAIL_MAX_LENGTH 255
-
-// User roles
-typedef enum {
-    ADMIN,
-    EDITOR,
-    VIEWER
-} Role;
-
-// User structure definitions
-typedef struct {
-    int userID;
-    char firstName[100];
-    char lastName[100];
-    Role userRole;
-    char emailAddress[EMAIL_MAX_LENGTH];// Email address
-    char telephone[TELEPHONE_MAX_LENGTH];// Telephone
-    // Date of Birth
-    // Password??
-    // Account creation date
-    // Date of last update
-    // Free Text Notes
-} User;
-
-// Function prototypes
-void add_user();
-
-void view_user();
-
-void update_user();
-
-void delete_user();
-
+#include "user.h"
 
 int main() {
 
@@ -48,27 +9,47 @@ int main() {
         printf("----------------------------\n");
         printf("       Main Menu\n");
         printf("----------------------------\n");
-        printf("(1) Edit User \n");
-        printf("(2) Create User\n");
-        printf("(3) Delete User\n");
+        printf("(1) Create User\n");
+        printf("(2) Edit User\n");
+        printf("(3) View User\n");
+        printf("(4) Display All Users\n");
+        printf("(5) Delete User\n");
         printf("(Q) Quit \n\n");
         printf("----------------------------\n");
         printf("Enter your choice: ");
         scanf(" %c", &choice);
         choice = tolower(choice);
+        printf("\n");
 
         // Process the choice
 
         switch (choice) {
-            case '1':
-                printf("\nEdit User Form\n");
+            case '1': {
+                // Create a new user
+                getUserData();
                 break;
+            }
             case '2':
-                printf("\nCreate User Form\n");
+
+                printf("Editing user \n\n");
+                printf("----------------------------\n");
                 break;
             case '3':
-                printf("\nDelete User Form\n");
+                printf("Viewing User\n");
+                printf("----------------------------\n");
+                promptForUser();
                 break;
+            case '4':
+                printf("All Users\n");
+                printf("----------------------------\n");
+                displayAllUsers();
+                break;
+            case '5':
+                printf("Deleting User\n");
+                printf("----------------------------\n");
+                promptForUser();
+                break;
+
             case 'q':
                 printf("\nExiting App\n");
                 return 0;
@@ -77,9 +58,8 @@ int main() {
 
         }
 
-    } while (
-            choice != 'q'
-            );
+
+    } while (choice != 'q');
 
 
     return 0;
